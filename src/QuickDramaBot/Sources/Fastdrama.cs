@@ -36,6 +36,7 @@ namespace DramaBot.Sources
                 /// Get title
                 title = latest.Split(new[] { @"alt=""" }, StringSplitOptions.None)[1];
                 title = title.Split(new[] { @" src" }, StringSplitOptions.None)[0];
+                title = title.Split(new[] { @"FastDrama " }, StringSplitOptions.None)[1];
                 title = title.Remove(title.Length - 1, 1);
                 /// Get episode first
                 episode = latest.Split(new[] { @">Ep" }, StringSplitOptions.None)[1];
