@@ -45,7 +45,7 @@ namespace DramaBot
                     result.Wait();
                     if (result == null)
                     {
-                        Console.WriteLine("Tweet failed to process, but API did not report an error");
+                        Console.WriteLine("Tweet failed to process, but API did not report an error"); 
                     }
                 }
                 catch (Exception ex)
