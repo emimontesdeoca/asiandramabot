@@ -21,16 +21,16 @@ namespace DramaBot
             Console.WriteLine("\n--------------------------------------------------------------------\n");
             List<string> tweets = new List<string>();
 
-            //tweets.AddRange(Sources.Myasiantv.Tweets());
-            //tweets.AddRange(Sources.Quickdrama.Tweets());
-            //tweets.AddRange(Sources.Dramacool.Tweets());
-            //tweets.AddRange(Sources.Estrenosdoramas.Tweets());
-            //tweets.AddRange(Sources.Ondemandkorea.Tweets());
-            //tweets.AddRange(Sources.Kbsworld.Tweets());
-            //tweets.AddRange(Sources.Kshowonline.Tweets());
-            //tweets.AddRange(Sources.Dramafever.Tweets());
-            //tweets.AddRange(Sources.Dramahood.Tweets());
-            //tweets.AddRange(Sources.Fastdrama.Tweets());
+            tweets.AddRange(Sources.Myasiantv.Tweets());
+            tweets.AddRange(Sources.Quickdrama.Tweets());
+            tweets.AddRange(Sources.Dramacool.Tweets());
+            tweets.AddRange(Sources.Estrenosdoramas.Tweets());
+            tweets.AddRange(Sources.Ondemandkorea.Tweets());
+            tweets.AddRange(Sources.Kbsworld.Tweets());
+            tweets.AddRange(Sources.Kshowonline.Tweets());
+            tweets.AddRange(Sources.Dramafever.Tweets());
+            tweets.AddRange(Sources.Dramahood.Tweets());
+            tweets.AddRange(Sources.Fastdrama.Tweets());
             tweets.AddRange(Sources.Kshow123.Tweets());
 
 
@@ -44,24 +44,27 @@ namespace DramaBot
                 message = Utils.checkErrors(message);
 
                 Console.WriteLine("\n" + message);
-                //try
-                //{
-                //    var result = Task.Run(() => Utils.SendTweet(message));
-                //    result.Wait();
-                //    if (result == null)
-                //    {
-                //        Console.WriteLine("Tweet failed to process, but API did not report an error"); 
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine(ex.Message);
-                //}
+                try
+                {
+                    var result = Task.Run(() => Utils.SendTweet(message));
+                    result.Wait();
+                    if (result == null)
+                    {
+                        Console.WriteLine("Tweet failed to process, but API did not report an error");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
             Console.WriteLine("\n--------------------------------------------------------------------\n");
             finish = DateTime.Now;
             var diff = finish.Subtract(start);
             Console.WriteLine("[{0}] - Work completed in {1} seconds!", DateTime.Now, diff.Seconds);
+
+            string log = $"[{DateTime.Now}] - Work completed in {diff.Seconds} seconds with {tweets.Count()} updates!";
+            Utils.saveLog(log);
 
             //Console.ReadLine();
         }

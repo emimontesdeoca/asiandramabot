@@ -14,6 +14,7 @@ namespace DramaBot
     {
 
         public static string path = @"C:\bots\dramabot\tweets.txt";
+        public static string log = @"C:\bots\dramabot\logs.txt";
         public static string googleApi = "AIzaSyD8gFksIv8wq6QoEuXIdCYcBKY1Mc72Ufw";
         public static string UppercaseFirst(string str)
         {
@@ -80,6 +81,14 @@ namespace DramaBot
                 save.WriteLine(message);
             }
 
+        }
+
+        public static void saveLog(string message)
+        {
+            using (StreamWriter save = new StreamWriter(log, true))
+            {
+                save.WriteLine(message);
+            }
         }
         public static bool tweetExists(string message)
         {
