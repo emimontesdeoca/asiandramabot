@@ -105,5 +105,52 @@ namespace DramaBot
                 return false;
             }
         }
+
+        public static string checkErrors(string message)
+        {
+            if (message.Contains("&#8211;"))
+            {
+                message = message.Replace("&#8211;", "-");
+            }
+
+            if (message.Contains("&amp;#039;"))
+            {
+                message = message.Replace("&amp;#039;", "'");
+            }
+
+            if (message.Contains("&#8217;"))
+            {
+                message = message.Replace("&#8217;", "'");
+            }
+
+            if (message.Contains("â€™"))
+            {
+                message = message.Replace("â€™", "'");
+            }
+
+            if (message.Contains("â€“"))
+            {
+                message = message.Replace("â€“", "-");
+            }
+
+            if (message.Contains("&#39;"))
+            {
+                message = message.Replace("&#39;", "'");
+            }
+
+            return message;
+        }
+
+        public static string getHtml(string html)
+        {
+            string htmlCode = "";
+            using (WebClient client = new WebClient { Encoding = System.Text.Encoding.UTF8 })
+            {
+                /// Get all page
+                htmlCode = client.DownloadString(html);
+            }
+
+            return htmlCode;
+        }
     }
 }
