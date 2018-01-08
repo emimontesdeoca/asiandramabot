@@ -39,26 +39,26 @@ namespace DramaBot
                 message = Utils.checkErrors(message);
 
                 Console.WriteLine("\n" + message);
-                //try
-                //{
-                //    var result = Task.Run(() => Utils.SendTweet(message));
-                //    result.Wait();
-                //    if (result == null)
-                //    {
-                //        Console.WriteLine("Tweet failed to process, but API did not report an error");
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine(ex.Message);
-                //}
+                try
+                {
+                    var result = Task.Run(() => Utils.SendTweet(message));
+                    result.Wait();
+                    if (result == null)
+                    {
+                        Console.WriteLine("Tweet failed to process, but API did not report an error");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
             Console.WriteLine("\n--------------------------------------------------------------------\n");
             finish = DateTime.Now;
             var diff = finish.Subtract(start);
             Console.WriteLine("[{0}] - Work completed in {1} seconds!", DateTime.Now, diff.Seconds);
 
-            Console.ReadLine();
+            //Console.ReadLine();
         }
     }
 }
