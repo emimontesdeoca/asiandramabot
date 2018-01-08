@@ -1,51 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DramaBot.Sources
 {
-    public class Kbsworld
+    public class Fastdrama
     {
-        public static string source = "KBS World TV";
-        public static string baseurl = "https://www.youtube.com/user/kbsworld/";
-        public static string baseurlyt = "https://www.youtube.com/watch?v=";
+        public static string source = "Fastdrama";
+        public static string baseurl = "http://fastdrama.co/";
 
         public static List<string> Tweets()
         {
 
             List<string> tweets = new List<string>();
 
-            string url, title, genre = "Variety", shorturl = "", message;
+            string url, title, episode = "", genre = "Series", shorturl = "", message;
 
             try
             {
                 Console.WriteLine("[{0}] - Starting {1}!", DateTime.Now, source);
 
-                string htmlCode = Utils.getHtml("https://www.youtube.com/user/kbsworld/videos?sort=dd&view=0&flow=grid");
+                string htmlCode = Utils.getHtml(baseurl);
 
                 /// Get first of all items
-                string latest = htmlCode.Split(new[] { @"yt-ui-ellipsis yt-ui-ellipsis-2" }, StringSplitOptions.None)[1];
-
+                string latest = htmlCode.Split(new[] { @"<div class=""image"">" }, StringSplitOptions.None)[1];
+                latest = latest.Split(new[] { @"a href=""" }, StringSplitOptions.None)[1];
                 /// Get URL
-                url = latest.Split(new[] { @"watch?v=" }, StringSplitOptions.None)[1];
-                url = url.Split(new[] { @">" }, StringSplitOptions.None)[0];
-                url = url.Remove(url.Length - 1, 1);
-                url = baseurlyt + url;
+                url = latest.Split(new[] { @" title" }, StringSplitOptions.None)[0];
+                //url = url.Remove(url.Length - 1, 1);
+                url = baseurl + url.Remove(url.Length - 1, 1);
+
 
                 /// Get title
-                title = latest.Split(new[] { @"title=""" }, StringSplitOptions.None)[1];
-                title = title.Split(new[] { @" aria" }, StringSplitOptions.None)[0];
-                title = title.Remove(title.Length - 2, 2);
+                title = latest.Split(new[] { @"alt=""" }, StringSplitOptions.None)[1];
+                title = title.Split(new[] { @" src" }, StringSplitOptions.None)[0];
+                title = title.Remove(title.Length - 1, 1);
+                /// Get episode first
+                episode = latest.Split(new[] { @">Ep" }, StringSplitOptions.None)[1];
+                episode = episode.Split(new[] { @" (" }, StringSplitOptions.None)[0];
+                episode = "Episode " + episode;
 
                 /// Get short URL
                 shorturl = Utils.urlShorter(url);
 
                 /// Twitter message
-                message = "[🇬🇧 - @KBSWorldTV - " + genre + "] " + title + " - https://goo.gl/" + shorturl + " #KDrama";
-
+                message = "[🇬🇧 - " + source + " - " + genre + "] " + title + " - " + episode + " - https://goo.gl/" + shorturl + " #KDrama";
 
                 /// Log
                 //Console.WriteLine("URL: " + url);

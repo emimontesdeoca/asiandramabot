@@ -34,17 +34,18 @@ namespace DramaBot.Sources
                 url = baseurl + url;
 
                 /// Get title
-                title = latest.Split(new[] { @">" }, StringSplitOptions.None)[1];
+                title = latest.Split(new[] { @"pull-left evt-tap"">" }, StringSplitOptions.None)[1];
                 title = title.Split(new[] { @"<" }, StringSplitOptions.None)[0];
                 /// Get episode first
-                episode = latest.Split(new[] { @"Ep " }, StringSplitOptions.None)[1];
-                episode = episode.Split(new[] { @"<" }, StringSplitOptions.None)[1];
+                episode = latest.Split(new[] { @">Ep " }, StringSplitOptions.None)[1];
+                episode = episode.Split(new[] { @"<" }, StringSplitOptions.None)[0];
+                episode = "Episode " + episode;
 
                 /// Get short URL
                 shorturl = Utils.urlShorter(url);
 
                 /// Twitter message
-                message = "[🇬🇧 - " + source + " - " + genre + "] " + title + " - " + episode + "- https://goo.gl/" + shorturl + " #KDrama";
+                message = "[🇬🇧 - @DramaFever - " + genre + "] " + title + " - " + episode + " - https://goo.gl/" + shorturl + " #KDrama";
 
                 /// Log
                 //Console.WriteLine("URL: " + url);

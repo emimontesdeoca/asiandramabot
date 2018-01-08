@@ -71,7 +71,10 @@
     <Compile Include="Sources\Dramacool.cs" />
     <Compile Include="Sources\Dramafever.cs" />
     <Compile Include="Sources\Estrenosdoramas.cs" />
+    <Compile Include="Sources\Fastdrama.cs" />
     <Compile Include="Sources\Kbsworld.cs" />
+    <Compile Include="Sources\Dramahood.cs" />
+    <Compile Include="Sources\Kshow123.cs" />
     <Compile Include="Sources\Kshowonline.cs" />
     <Compile Include="Sources\Myasiantv.cs" />
     <Compile Include="Sources\Ondemandkorea.cs" />

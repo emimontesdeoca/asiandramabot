@@ -66,13 +66,11 @@ namespace DramaBot.Sources
                         break;
                     }
 
-
                     /// Get short URL
                     shorturl = Utils.urlShorter(url);
 
                     /// Twitter message
-                    message = "[🇬🇧 - " + source + " - " + genre + "] " + title + " - " + episode + " - https://goo.gl/" + shorturl + " #KDrama";
-
+                    message = "[🇬🇧 - @ondemandkorea - " + genre + "] " + title + " - " + episode + " - https://goo.gl/" + shorturl + " #KDrama";
 
                     /// Log
                     //Console.WriteLine("URL: " + url);
