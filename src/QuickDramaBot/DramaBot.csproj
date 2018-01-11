@@ -79,6 +79,7 @@
     <Compile Include="Sources\Myasiantv.cs" />
     <Compile Include="Sources\Ondemandkorea.cs" />
     <Compile Include="Sources\Quickdrama.cs" />
+    <Compile Include="Sources\Viki.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
