@@ -15,7 +15,7 @@ namespace DramaBot
 
         public static string path = @"C:\bots\dramabot\tweets.txt";
         public static string log = @"C:\bots\dramabot\logs.txt";
-        public static string googleApi = "AIzaSyD8gFksIv8wq6QoEuXIdCYcBKY1Mc72Ufw";
+        public static string googleApi = "";
         public static string UppercaseFirst(string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -59,10 +59,10 @@ namespace DramaBot
             {
                 CredentialStore = new SingleUserInMemoryCredentialStore
                 {
-                    ConsumerKey = "savKnrRwFokkbVFt7bpkjDHxA",
-                    ConsumerSecret = "tARrxzKYmph0oXWv7vP6HkWy0Cm32NMArAyyiBgfhUW4Ja8jYO",
-                    AccessToken = "949460851156713472-KofpFi4VTLpEQXTijQK6PZynMc8OqWH",
-                    AccessTokenSecret = "WZDTPrXsxLFybyRrVaIwvSDimIyLEOSZr7IRhnMCeK18C"
+                    ConsumerKey = "",
+                    ConsumerSecret = "",
+                    AccessToken = "-KofpFi4VTLpEQXTijQK6PZynMc8OqWH",
+                    AccessTokenSecret = ""
                 }
             };
 
